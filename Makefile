@@ -1,5 +1,3 @@
-# Makefile for ft_printf
-
 NAME = libftprintf.a
 
 CC = cc
