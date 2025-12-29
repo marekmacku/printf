@@ -126,7 +126,10 @@ char	*ft_ultoa_base(unsigned long n, int uppercase)
 	unsigned long	num;
 	const char		*hex_chars;
 
-	hex_chars = uppercase ? "0123456789ABCDEF" : "0123456789abcdef";
+	if (uppercase)
+		hex_chars = "0123456789ABCDEF";
+	else
+		hex_chars = "0123456789abcdef";
 	num = n;
 	len = count_hex_digits(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));

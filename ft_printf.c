@@ -15,6 +15,9 @@ static int	ft_handle_integer_spec(char spec, va_list *args)
 
 static int	ft_handle_format_specifier(char spec, va_list *args)
 {
+	int	result;
+
+	result = 0;
 	if (spec == 'c')
 		return (ft_print_char(args));
 	if (spec == 's')
@@ -25,7 +28,10 @@ static int	ft_handle_format_specifier(char spec, va_list *args)
 		return (ft_print_percent());
 	if (spec == 'd' || spec == 'i' || spec == 'u' || spec == 'x' || spec == 'X')
 		return (ft_handle_integer_spec(spec, args));
-	return (ft_putchar('%') + (spec ? ft_putchar(spec) : 0));
+	result = ft_putchar('%');
+	if (spec)
+		result += ft_putchar(spec);
+	return (result);
 }
 
 int	ft_printf(const char *format, ...)
