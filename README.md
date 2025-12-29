@@ -1,6 +1,6 @@
-# Printf
-
 *This project has been created as part of the 42 curriculum by mmacku*
+
+# Printf
 
 ## Description
 
@@ -35,7 +35,7 @@ This will compile all source files and create the static library.
 
 ### Installation
 
-The library is compiled into `libftprintf.a`. To use it in your p√roject:
+The library is compiled into `libftprintf.a`. To use it in your project:
 
 1. Include the header file:
 ```c
@@ -72,8 +72,6 @@ int main(void)
 
 ### Algorithm Overview
 
-The implementation follows a **state machine pattern** combined with **variadic argument processing**:
-
 1. **Format String Parsing**: The main `ft_printf` function iterates through the format string character by character.
 
 2. **Format Specifier Detection**: When a `%` character is encountered, the next character is examined to determine the format specifier type.
@@ -104,28 +102,14 @@ The implementation uses the following key data structures:
 #### Integer to String Conversion (`ft_itoa`)
 - **Algorithm**: Repeated division by 10, storing remainders as digits
 - **Edge Cases**: Handles zero, negative numbers, and minimum integer value
-- **Time Complexity**: O(log₁₀ n) where n is the number
-- **Space Complexity**: O(log₁₀ n) for the string buffer
 
 #### Hexadecimal Conversion (`ft_ultoa_base`)
 - **Algorithm**: Repeated division by 16, using a lookup table for hex digits
 - **Optimization**: Uses a conditional string for uppercase/lowercase hex characters
-- **Time Complexity**: O(log₁₆ n)
-- **Space Complexity**: O(log₁₆ n)
 
 #### Pointer Conversion
 - **Algorithm**: Casts pointer to `unsigned long`, then converts to hexadecimal
 - **Special Case**: Handles NULL pointers by printing "0x0"
-
-### Design Choices
-
-1. **Modular Function Design**: Each format specifier has its own handler function, making the code maintainable and easy to extend.
-
-2. **Dynamic Memory Allocation**: Numbers are converted to strings using heap-allocated buffers. While this adds memory management overhead, it allows for clean separation of concerns and handles numbers of any size within type limits.
-
-3. **Direct Write System Calls**: Uses `write()` system call directly instead of buffered I/O, matching the standard `printf` behavior for character counting accuracy.
-
-4. **Return Value Tracking**: Each function returns the number of characters printed, allowing the main function to accurately track and return the total count.
 
 ## Resources
 
@@ -133,8 +117,8 @@ The implementation uses the following key data structures:
 
 - [printf(3) - Linux man page](https://man7.org/linux/man-pages/man3/printf.3.html)
 - [C Standard Library - stdarg.h](https://en.cppreference.com/w/c/variadic)
-- [Variadic Functions in C](https://www.gnu.org/software/libc/manual/html_node/Variadic-Functions.html)
-- [Integer to String Conversion Algorithms](https://www.geeksforgeeks.org/convert-integer-to-string-in-c/)
+- [C format specifiers](https://www.geeksforgeeks.org/c/format-specifiers-in-c/)
+- [Difference between %d and %i format specifier in C language](https://www.geeksforgeeks.org/c/difference-d-format-specifier-c-language/)
 
 ### AI Usage
 
